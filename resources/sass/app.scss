@@ -1,0 +1,256 @@
+// Fonts
+@import url('https://fonts.bunny.net/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import 'bootstrap/scss/bootstrap';
+
+.categories-list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    .content {
+        display: flex;
+        gap: 10px;
+        h2 {
+            color: crimson;
+            margin: 0;
+        }
+    }
+
+    .buttons {
+        display: flex;
+        align-items: center;
+
+        button,
+        form,
+        a {
+            margin: 5px 10px;
+            width: 90px;
+            display:block;
+        }
+
+        form {
+            display: flex;
+            align-items: center;
+            margin: 0;
+        }
+        button{
+            transform: translate(2deg);
+        }
+    }
+
+}
+.trucks-list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    .content {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        h2 {
+            color: skyblue;
+            margin: 0;
+            font-size: 22px;
+            span {
+                font-size: 12px;
+                color: grey;
+                font-style: italic;
+                margin-right: 10px;
+            }
+        }
+        h4 {
+            color: orangered;
+            margin: 0;
+            font-size: 22px;
+            display: flex;
+            align-items: center;
+            margin: 0 0 0 15px;
+            span {
+                font-size: 12px;
+                color: grey;
+                font-style: italic;
+                margin-right: 10px;
+            }
+        }
+        h5 {
+            color: olivedrab;
+            margin: 0;
+            font-size: 22px;
+            display: flex;
+            align-items: center;
+            margin: 0 0 0 15px;
+            span {
+                font-size: 12px;
+                color: grey;
+                font-style: italic;
+                margin-right: 10px;
+            }
+            a{
+                text-decoration: none;
+                color: olive;
+                transition: all 0.3s;
+                &:hover{
+                    color: coral;
+                }
+            }
+        }
+    }
+
+    .buttons {
+        display: flex;
+        align-items: center;
+
+        button,
+        form,
+        a {
+            margin: 5px 10px;
+            width: 90px;
+            display:block;
+        }
+
+        form {
+            display: flex;
+            align-items: center;
+            margin: 0;
+        }
+        button{
+            transform: translate(2deg);
+        }
+    }
+
+}
+
+.mechanic {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    h5{
+        margin: 10px;
+        font-size: 40px;
+        color: crimson;
+    }
+}
+
+.truck-show{
+    .line{
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        width: 100%;
+        margin: 0 0 10px 0;
+        h5{
+            margin: 0 0 5px 0;
+        }
+    }
+    p{
+        font-family: 'Courier New', Courier, monospace;
+        color: gainsboro;
+    }
+}
+
+.breakdowns-list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    .content {
+        display: flex;
+        gap: 10px;
+        h2 {
+            color: crimson;
+            margin: 0;
+        }
+    }
+
+    .buttons {
+        display: flex;
+        align-items: center;
+
+        button,
+        a {
+            margin: 5px 10px;
+            width: 90px;
+            display:block;
+        }
+
+        form {
+            display: flex;
+            align-items: center;
+            margin: 0;
+        }
+        button{
+            transform: translate(2deg);
+        }
+    }
+
+    .img {
+        img {
+            width: auto;
+            height: 300px;
+        }
+    }
+    
+    .img-small {
+        img {
+            width: auto;
+            height: 100px;
+        }
+    }
+    
+    textarea.form-control {
+        min-height: 200px;
+    }
+    
+    h2 small {
+        font-size: 12px;
+        color: cornflowerblue;
+    }
+    
+    .img-small-ch {
+        .img {
+            position: relative;
+            margin: 25px;
+            img {
+                width: auto;
+                height: 50px;
+                position: relative;
+                z-index: 10;
+            }
+            label {
+                position: absolute;
+                z-index: 20;
+                top: -10px;
+                left: -10px;
+                background-color: crimson;
+                color: white;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 20px;
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                font-weight: bold;
+                user-select: none;
+                cursor: pointer;
+            }
+            [type=checkbox] {
+                display: none;
+                &:checked~img {
+                    opacity: 0.3;
+                }
+            }
+        }
+    }
+}
