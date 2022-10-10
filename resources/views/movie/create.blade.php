@@ -22,13 +22,6 @@
                             <label  class="form-label">Price</label>
                             <input type="file" name="photo[]" multiple class="form-control">
                         </div>
-                        
-                        <select name="category_id" class="form-select mb-3">
-                            <option value="0">Choose Category</option>
-                            @foreach($categories as $category)
-                                <option value="{{ $category->id }}"@if($category->id == old('category_id')) selected @endif > {{ $category->title }}</option>
-                            @endforeach
-                        </select>
                         @csrf
                         <button type="submit" class="btn btn-warning">Create</button>
                     </form>

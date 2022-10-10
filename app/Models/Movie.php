@@ -21,11 +21,7 @@ class Movie extends Model
         ['price_desc', 'Price High first'],
     ];
 
-    public function getCategory()
-    {
-        return $this->belongsTo(Category::class, 'category_id', 'id');
-    }
-
+    
     public function getPhotos()
     {
         return $this->hasMany(MovieImage::class, 'movie_id', 'id');
@@ -77,5 +73,10 @@ class Movie extends Model
     public function firstImageUrl()
     {
         return $this->getPhotos()->first()->url;
+    }
+
+    public function getComments()
+    {
+        return $this->hasMany(Comment::class, 'movie_id', 'id');
     }
 }

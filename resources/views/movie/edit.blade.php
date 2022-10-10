@@ -32,12 +32,6 @@
                             <h2>No Photos To Delete</h2>
                             @endforelse
                         </div>
-                        <select name="category_id" class="form-select mb-3">
-                            <option value="0">Choose category</option>
-                            @foreach($categories as $category)
-                            <option value="{{ $category->id }}" @if($category->id == old('category_id', $movie->category_id)) selected @endif> {{ $category->title }}</option>
-                            @endforeach
-                        </select>
                         @csrf
                         @method('put')
                         @if(Auth::user()->role >= 10)

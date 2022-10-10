@@ -17,7 +17,7 @@ class MovieController extends Controller
     {
         // dd(Movie::all()); 
         return view('movie.index', [
-            'movies' => Movie::orderBy('updated_at', 'DESC')->get()
+            'movies' => Movie::orderBy('updated_at', 'DESC')->paginate(5)
         ]);
     }
 
@@ -28,11 +28,8 @@ class MovieController extends Controller
      */
     public function create()
     {
-        $categories = Category::orderBy('updated_at', 'DESC')->get();
 
-       return view('movie.create', [
-        'categories' => $categories
-       ]);
+        return view('movie.create');
     }
 
     /**
@@ -47,7 +44,6 @@ class MovieController extends Controller
         Movie::create([
             'title' => $request->title,
             'price' => $request->price,
-            'category_id' => $request->category_id
         ])->addImages($request->file('photo'));
 
         return redirect()->route('m_index');
@@ -77,8 +73,7 @@ class MovieController extends Controller
     public function edit(Movie $movie)
     {
         return view('movie.edit', [
-            'movie' => $movie,
-            'categories' => Category::orderBy('updated_at', 'DESC')->get()
+            'movie' => $movie
         ]);
     }
 
@@ -94,7 +89,6 @@ class MovieController extends Controller
         $movie->update([
             'title' => $request->title,
             'price' => $request->price,
-            'category_id' => $request->category_id
         ]);
         $movie->deleteImages($request->delete_photo)->addImages($request->file('photo'));
 
