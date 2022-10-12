@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Movie;
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Models\Tag;
 
 class MovieController extends Controller
 {
@@ -29,7 +30,9 @@ class MovieController extends Controller
     public function create()
     {
 
-        return view('movie.create');
+        return view('movie.create', [
+            'tags' => Tag::orderBy('title', 'desc')->get(),
+        ]);
     }
 
     /**
@@ -40,11 +43,28 @@ class MovieController extends Controller
      */
     public function store(Request $request)
     {
+
+        $request->validate([
+            'title' => ['required', 'min:3', 'max:20'],
+            'price' => ['required', 'numeric', 'min:1', 'max:100'],
+            'photo.*' => ['sometimes', 'required', 'mimes:jpg', 'max:2000']
+        ],
+        [
+            'title.required' => 'Nera tytlo',
+            'title.min' => 'Tytlas trumpas',
+            'title.max' => 'Tytlas ilgas',
+            'price.required' => 'Nieko nekainuoti negali',
+            'price.numeric' => 'Turi buti skaicius',
+            'price.min' => 'Price trumpas',
+            'price.max' => 'Price ilgas',
+            'photo.mimes' => 'Netinkamas fotkes formatas',
+            'photo.max' => 'Fotke per didele',
+        ]);
         
         Movie::create([
             'title' => $request->title,
             'price' => $request->price,
-        ])->addImages($request->file('photo'));
+        ])->addImages($request->file('photo'))->addTags($request->tag);
 
         return redirect()->route('m_index');
     }
@@ -59,7 +79,7 @@ class MovieController extends Controller
     {
         
         return view('movie.show', [
-            'movie' => $movie
+            'movie' => $movie,
 
         ]);
     }
@@ -73,7 +93,9 @@ class MovieController extends Controller
     public function edit(Movie $movie)
     {
         return view('movie.edit', [
-            'movie' => $movie
+            'movie' => $movie,
+            'tags' => Tag::orderBy('title', 'desc')->get(),
+            'checkedTags' => $movie->getPivot()->pluck('tag_id')->all(),
         ]);
     }
 

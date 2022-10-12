@@ -19,6 +19,20 @@
                             <label for="titleText" class="form-label">price</label>
                             <input value="{{old('price', $movie->price)}}" name="price" type="text" class="form-control" id="titleText">
                         </div>
+                        <div class="mb-3 tags-cloud">
+
+                            @forelse($tags as $tag)
+                            <div class="form-check">
+                                <input @if(in_array($tag->id, $checkedTags)) checked @endif class="form-check-input" name="tag[]" type="checkbox" value="{{ $tag->id }}" id="_{{ $tag->id }}">
+                                <label class="form-check-label" for="_{{ $tag->id }}">
+                                    {{ $tag->title }}
+                                </label>
+                            </div>
+                            @empty
+                            <h3>No tags...</h3>
+                            @endforelse
+
+                        </div>
                         <div class="mb-3 img-small-ch">
                             @forelse($movie->getPhotos as $photo)
                             <div class="img">

@@ -254,3 +254,26 @@
         }
     }
 }
+
+.error-red {
+    color: crimson;
+}
+
+.all-tags {
+    margin: 0 10px;
+    border: 1px dotted skyblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    span {
+        padding: 5px 5px 0 5px;
+        color: orange;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+    a {
+        text-decoration: none;
+        color: black;
+    }
+}
